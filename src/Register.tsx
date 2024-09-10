@@ -49,6 +49,7 @@ const Register = () => {
             <input
               type="text"
               name="firstName"
+              value={data.firstName}
               placeholder="Enter first name"
               onChange={handleChange}
               className="w-full p-3 border border-slate-500 rounded-lg focus:outline-none hover:border-purple-800 hover:shadow"
@@ -62,6 +63,7 @@ const Register = () => {
             <input
               type="text"
               name="lastName"
+              value={data.lastName}
               placeholder="Enter last name"
               onChange={handleChange}
               className="w-full p-3 border border-slate-500 rounded-lg focus:outline-none hover:border-purple-800 hover:shadow"
@@ -75,6 +77,7 @@ const Register = () => {
             <input
               type="email"
               name="email"
+              value={data.email}
               placeholder="Enter email"
               onChange={handleChange}
               className="w-full p-3 border border-slate-500 rounded-lg focus:outline-none hover:border-purple-800 hover:shadow"
@@ -88,6 +91,7 @@ const Register = () => {
             <input
               type="password"
               name="password"
+              value={data.password}
               placeholder="Enter password"
               onChange={handleChange}
               className="w-full p-3 border border-slate-500 rounded-lg focus:outline-none hover:border-purple-800 hover:shadow"

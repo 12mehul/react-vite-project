@@ -23,7 +23,7 @@ const Login = () => {
     }
 
     const response: AxiosResponse = await axios.post(
-      "https://66e066f02fb67ac16f2981b3.mockapi.io/api/users/login",
+      "https://hospital-management-backend-theta.vercel.app/api/accounts/login",
       data
     );
     if (response.status === 200) {
@@ -47,6 +47,7 @@ const Login = () => {
             <input
               type="email"
               name="email"
+              value={data.email}
               placeholder="Enter email"
               onChange={handleChange}
               className="w-full p-3 border border-slate-500 rounded-lg focus:outline-none hover:border-purple-800 hover:shadow"
@@ -60,6 +61,7 @@ const Login = () => {
             <input
               type="password"
               name="password"
+              value={data.password}
               placeholder="Enter password"
               onChange={handleChange}
               className="w-full p-3 border border-slate-500 rounded-lg focus:outline-none hover:border-purple-800 hover:shadow"
