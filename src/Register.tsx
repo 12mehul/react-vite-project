@@ -7,6 +7,7 @@ const initialValues = {
   lastName: "",
   email: "",
   password: "",
+  confirmPassword: "",
 };
 
 const Register = () => {
