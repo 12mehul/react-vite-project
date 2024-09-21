@@ -10,6 +10,7 @@ import FormikRegister from "./FormikRegister";
 import Projects from "./Projects";
 import ProjectDetails from "./ProjectDetails";
 import FormikWithMuiSignup from "./FormikWithMuiSignup";
+import Products from "./Products";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<ProjectDetails />} />
         <Route path="/mui-formik-reg" element={<FormikWithMuiSignup />} />
+        <Route path="/products" element={<Products />} />
       </Routes>
     </BrowserRouter>
   );
