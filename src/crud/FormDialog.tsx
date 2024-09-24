@@ -30,7 +30,7 @@ export default function FormDialog(props: IFormPageProps) {
   };
 
   const saveInfo = () => {
-    props.setData({ ...formObj });
+    props.setData(formObj);
     setFormObj(initialValues);
     props.handleClose();
   };
