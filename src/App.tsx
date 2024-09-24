@@ -13,6 +13,7 @@ import FormikWithMuiSignup from "./FormikWithMuiSignup";
 import Products from "./Products";
 import DataGridDisplayComments from "./DataGridDisplayComments";
 import DataGridDisplayPhotos from "./DataGridDisplayPhotos";
+import ParentCrud from "./crud/ParentCrud";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/comments" element={<DataGridDisplayComments />} />
         <Route path="/photos" element={<DataGridDisplayPhotos />} />
+        <Route path="/crud-form" element={<ParentCrud />} />
       </Routes>
     </BrowserRouter>
   );
