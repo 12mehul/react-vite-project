@@ -11,6 +11,8 @@ import Projects from "./Projects";
 import ProjectDetails from "./ProjectDetails";
 import FormikWithMuiSignup from "./FormikWithMuiSignup";
 import Products from "./Products";
+import DataGridDisplayComments from "./DataGridDisplayComments";
+import DataGridDisplayPhotos from "./DataGridDisplayPhotos";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/projects/:id" element={<ProjectDetails />} />
         <Route path="/mui-formik-reg" element={<FormikWithMuiSignup />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/comments" element={<DataGridDisplayComments />} />
+        <Route path="/photos" element={<DataGridDisplayPhotos />} />
       </Routes>
     </BrowserRouter>
   );
