@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Dialog,
@@ -8,13 +8,7 @@ import {
   DialogTitle,
   TextField,
 } from "@mui/material";
-import { IFormObject } from "./ParentCrud";
-
-interface IFormPageProps {
-  open: boolean;
-  handleClose: Function;
-  setData: Function;
-}
+import { IFormObject, IFormPageProps } from "../interface/IGridCrud";
 
 const initialValues = {
   firstName: "",
@@ -29,9 +23,36 @@ export default function FormDialog(props: IFormPageProps) {
     setFormObj({ ...formObj, [name]: value });
   };
 
+  useEffect(() => {
+    if (props.id > 0) {
+      const existingRecord = props.data.find((v) => v.id == props.id);
+      if (existingRecord) {
+        setFormObj({ ...existingRecord });
+      }
+    } else {
+      setFormObj(initialValues);
+    }
+  }, [props.id, props.data]);
+
   const saveInfo = () => {
-    props.setData(formObj);
-    setFormObj(initialValues);
+    const prevData = [...props.data];
+    if (props.id <= 0) {
+      // Generate a unique ID based on the highest existing ID
+      const newId =
+        prevData.length > 0
+          ? Math.max(...prevData.map((item) => item.id)) + 1
+          : 1;
+      prevData.push({ ...formObj, id: newId });
+    } else {
+      const updatedData = prevData.find((v) => v.id == props.id);
+      if (updatedData) {
+        // Only update if the object exists
+        updatedData.firstName = formObj.firstName;
+        updatedData.lastName = formObj.lastName;
+      }
+    }
+    props.setData(prevData);
+    props.setId(-1);
     props.handleClose();
   };
 
@@ -43,7 +64,9 @@ export default function FormDialog(props: IFormPageProps) {
           props.handleClose();
         }}
       >
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>
+          {props.id > 0 ? "Edit Details" : "Add Details"}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText>To please enter your name.</DialogContentText>
           <TextField
@@ -60,7 +83,6 @@ export default function FormDialog(props: IFormPageProps) {
             onChange={handleChange}
           />
           <TextField
-            autoFocus
             required
             margin="dense"
             id="lastName"
