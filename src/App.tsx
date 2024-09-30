@@ -3,17 +3,18 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Counter from "./Counter";
-import Login from "./Login";
-import Register from "./Register";
-import FormikRegister from "./FormikRegister";
-import Projects from "./Projects";
-import ProjectDetails from "./ProjectDetails";
-import FormikWithMuiSignup from "./FormikWithMuiSignup";
-import Products from "./Products";
-import DataGridDisplayComments from "./DataGridDisplayComments";
-import DataGridDisplayPhotos from "./DataGridDisplayPhotos";
-import ParentCrud from "./crud/ParentCrud";
+import Counter from "./components/Counter";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import FormikRegister from "./components/FormikRegister";
+import Projects from "./components/Projects";
+import ProjectDetails from "./components/ProjectDetails";
+import FormikWithMuiSignup from "./components/FormikWithMuiSignup";
+import Products from "./components/Products";
+import DataGridDisplayComments from "./components/DataGridDisplayComments";
+import DataGridDisplayPhotos from "./components/DataGridDisplayPhotos";
+import ParentCrud from "./components/crud/ParentCrud";
+import GithubCard from "./components/GithubCard";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/comments" element={<DataGridDisplayComments />} />
         <Route path="/photos" element={<DataGridDisplayPhotos />} />
         <Route path="/crud-form" element={<ParentCrud />} />
+        <Route path="/github-card" element={<GithubCard />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { IDisplay } from "../interface/IGridCrud";
+import { IDisplay } from "../../interface/IGridCrud";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Button, Card } from "@mui/material";
 

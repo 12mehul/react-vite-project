@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { AppDispatch, RootState } from "./redux/store";
-import { projectDetailsRequest } from "./redux/project/actions";
+import { AppDispatch, RootState } from "../redux/store";
+import { projectDetailsRequest } from "../redux/project/actions";
 
 const ProjectDetails = () => {
   const { id } = useParams<{ id: string }>();

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import FormDialog from "./FormDialog";
 import DisplayGridCrud from "./DisplayGridCrud";
-import { IGridArray } from "../interface/IGridCrud";
+import { IGridArray } from "../../interface/IGridCrud";
 
 export default function ParentCrud() {
   const [open, setOpen] = useState<boolean>(false);

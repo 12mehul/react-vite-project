@@ -15,7 +15,7 @@ import { red } from "@mui/material/colors";
 import StarIcon from "@mui/icons-material/Star";
 import ReviewsIcon from "@mui/icons-material/Reviews";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { IProductPageProps } from "./interface/IProduct";
+import { IProductPageProps } from "../interface/IProduct";
 import ReadMore from "./ReadMore";
 
 const ProductItems = (data: IProductPageProps) => {

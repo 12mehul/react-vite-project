@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Grid } from "@mui/material";
 import ProductItems from "./ProductItems";
-import { IProduct } from "./interface/IProduct";
+import { IProduct } from "../interface/IProduct";
 import axios from "axios";
 
 export default function Products() {

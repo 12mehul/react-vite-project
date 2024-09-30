@@ -1,17 +1,14 @@
 import React, { FormEvent, useState } from "react";
-import { IRegister } from "./interface/IRegister";
+import { ILogin } from "../interface/ILogin";
 import axios, { AxiosResponse } from "axios";
 
 const initialValues = {
-  firstName: "",
-  lastName: "",
   email: "",
   password: "",
-  confirmPassword: "",
 };
 
-const Register = () => {
-  const [data, setData] = useState<IRegister>(initialValues);
+const Login = () => {
+  const [data, setData] = useState<ILogin>(initialValues);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -20,55 +17,27 @@ const Register = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!data.firstName || !data.lastName || !data.email || !data.password) {
+    if (!data.email || !data.password) {
       alert("Please fill all the fields");
       return;
     }
 
     const response: AxiosResponse = await axios.post(
-      "https://66e066f02fb67ac16f2981b3.mockapi.io/api/users/register",
+      "https://hospital-management-backend-theta.vercel.app/api/accounts/login",
       data
     );
-    if (response.status === 201) {
+    if (response.status === 200) {
       setData(initialValues);
-      alert("User registered successfully");
+      alert("User logged in successfully");
     }
   };
 
   return (
-    <div className="flex items-center justify-center my-8">
+    <div className="flex items-center justify-center h-screen">
       <div className="max-w-lg w-full mx-auto bg-white p-8 rounded-xl shadow shadow-slate-300">
-        <h2 className="text-4xl font-semibold text-purple-600">Register</h2>
+        <h2 className="text-4xl font-semibold text-purple-600">Login</h2>
         <form className="my-6" onSubmit={handleSubmit}>
           <div className="flex flex-col space-y-4">
-            <label
-              htmlFor="firstName"
-              className="text-base text-slate-500 font-medium"
-            >
-              First Name
-            </label>
-            <input
-              type="text"
-              name="firstName"
-              value={data.firstName}
-              placeholder="Enter first name"
-              onChange={handleChange}
-              className="w-full p-3 border border-slate-500 rounded-lg focus:outline-none hover:border-purple-800 hover:shadow"
-            />
-            <label
-              htmlFor="lastName"
-              className="text-base text-slate-500 font-medium"
-            >
-              Last Name
-            </label>
-            <input
-              type="text"
-              name="lastName"
-              value={data.lastName}
-              placeholder="Enter last name"
-              onChange={handleChange}
-              className="w-full p-3 border border-slate-500 rounded-lg focus:outline-none hover:border-purple-800 hover:shadow"
-            />
             <label
               htmlFor="email"
               className="text-base text-slate-500 font-medium"
@@ -105,13 +74,13 @@ const Register = () => {
             </button>
             <div className="flex gap-2 items-center justify-center">
               <p className="text-base text-slate-500 font-medium">
-                Registered Yet?
+                Not Registered Yet?
               </p>
               <a
                 className="text-base font-medium text-purple-800 hover:text-cyan-400"
-                href="/"
+                href="/register"
               >
-                Login
+                Register
               </a>
             </div>
           </div>
@@ -121,4 +90,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { IPhotos } from "./interface/IPhotos";
+import { IPhotos } from "../interface/IPhotos";
 import axios from "axios";
 import { Card, CardMedia } from "@mui/material";
 

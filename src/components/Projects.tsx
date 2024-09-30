@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "./redux/store";
-import { projectsRequest } from "./redux/project/actions";
+import { AppDispatch, RootState } from "../redux/store";
+import { projectsRequest } from "../redux/project/actions";
 import { useNavigate } from "react-router-dom";
 
 const Projects = () => {

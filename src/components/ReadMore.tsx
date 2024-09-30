@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IReadMore } from "./interface/IProduct";
+import { IReadMore } from "../interface/IProduct";
 
 const ReadMore = (props: IReadMore) => {
   const [isReadMore, setIsReadMore] = useState(true);

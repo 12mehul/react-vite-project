@@ -8,7 +8,7 @@ import {
   DialogTitle,
   TextField,
 } from "@mui/material";
-import { IFormObject, IFormPageProps } from "../interface/IGridCrud";
+import { IFormObject, IFormPageProps } from "../../interface/IGridCrud";
 
 const initialValues = {
   firstName: "",

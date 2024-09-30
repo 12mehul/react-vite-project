@@ -1,6 +1,6 @@
 import React from "react";
 import * as Yup from "yup";
-import { IRegister } from "./interface/IRegister";
+import { IRegister } from "../interface/IRegister";
 import { useFormik } from "formik";
 import axios, { AxiosResponse } from "axios";
 import {

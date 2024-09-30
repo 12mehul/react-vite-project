@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import { IRegister } from "./interface/IRegister";
+import { IRegister } from "../interface/IRegister";
 import * as Yup from "yup";
 
 const initialValues: IRegister = {
