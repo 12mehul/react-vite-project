@@ -1,42 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import { IGithub } from "../interface/IGithub";
 import axios from "axios";
 import { Container, Grid2, Pagination, Stack, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import GithubCard from "../common/GithubCard";
 
-const GithubFollowersCard = () => {
-  const { username } = useParams();
+const GithubUsersCard = () => {
   const navigate = useNavigate();
-  const [followersData, setFollowersData] = useState<IGithub[]>([]);
+  const [data, setData] = useState<IGithub[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.github.com/users/${username}/followers?per_page=100`
-      );
-      setFollowersData(response.data);
-    } catch (error) {
-      console.log("Error fetching data:", error);
-    }
-  };
-
   useEffect(() => {
-    if (username) {
-      fetchData();
-    }
-    setCurrentPage(1);
-  }, [username]);
+    axios
+      .get("https://api.github.com/users")
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleClick = (username: string) => {
     navigate(`/github-card/${username}/followers`);
   };
 
-  const totalPages = Math.ceil(followersData.length / itemsPerPage);
+  const totalPages = Math.ceil(data.length / itemsPerPage);
 
-  const paginatedData = followersData.slice(
+  const paginatedData = data.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -65,7 +53,7 @@ const GithubFollowersCard = () => {
           component="div"
           marginY={2}
         >
-          Welcome To GitHub Followers
+          Welcome To GitHub
         </Typography>
       </Grid2>
       <Grid2 container spacing={3} justifyContent="center">
@@ -94,4 +82,4 @@ const GithubFollowersCard = () => {
   );
 };
 
-export default GithubFollowersCard;
+export default GithubUsersCard;

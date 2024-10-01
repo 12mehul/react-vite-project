@@ -14,7 +14,7 @@ import Products from "./components/Products";
 import DataGridDisplayComments from "./components/DataGridDisplayComments";
 import DataGridDisplayPhotos from "./components/DataGridDisplayPhotos";
 import ParentCrud from "./components/crud/ParentCrud";
-import GithubCard from "./components/GithubCard";
+import GithubUsersCard from "./components/GithubUsersCard";
 import GithubFollowersCard from "./components/GithubFollowersCard";
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
         <Route path="/comments" element={<DataGridDisplayComments />} />
         <Route path="/photos" element={<DataGridDisplayPhotos />} />
         <Route path="/crud-form" element={<ParentCrud />} />
-        <Route path="/github-card" element={<GithubCard />} />
+        <Route path="/github-card" element={<GithubUsersCard />} />
         <Route
           path="/github-card/:username/followers"
           element={<GithubFollowersCard />}
