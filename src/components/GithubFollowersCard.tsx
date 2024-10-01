@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { IGithub } from "../interface/IGithub";
 import axios from "axios";
 import {
@@ -11,18 +12,28 @@ import {
   Grid2,
   Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
-const GithubCard = () => {
+const GithubFollowersCard = () => {
+  const { username } = useParams();
   const navigate = useNavigate();
-  const [data, setData] = useState<IGithub[]>([]);
+  const [followersData, setFollowersData] = useState<IGithub[]>([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.github.com/users/${username}/followers?per_page=100`
+      );
+      setFollowersData(response.data);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
-    axios
-      .get("https://api.github.com/users")
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+    if (username) {
+      fetchData();
+    }
+  }, [username]);
 
   const handleClick = (username: string) => {
     navigate(`/github-card/${username}/followers`);
@@ -39,7 +50,7 @@ const GithubCard = () => {
       }}
     >
       <Grid2 container spacing={3} justifyContent="center" marginTop="30px">
-        {data.map((value) => {
+        {followersData.map((value) => {
           return (
             <Grid2 key={value.id}>
               <Card sx={{ maxWidth: 255 }}>
@@ -82,4 +93,4 @@ const GithubCard = () => {
   );
 };
 
-export default GithubCard;
+export default GithubFollowersCard;
