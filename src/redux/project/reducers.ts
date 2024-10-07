@@ -5,6 +5,7 @@ import {
   PROJECTS_FAILURE,
   PROJECTS_REQUEST,
   PROJECTS_SUCCESS,
+  ProjectsActions,
 } from "./actions";
 import { IProjectState } from "./types";
 
@@ -15,7 +16,7 @@ const initialState: IProjectState = {
   error: null,
 };
 
-const projectsReducer = (state = initialState, action: any) => {
+const projectsReducer = (state = initialState, action: ProjectsActions) => {
   switch (action.type) {
     case PROJECTS_REQUEST:
     case PROJECT_DETAILS_REQUEST:

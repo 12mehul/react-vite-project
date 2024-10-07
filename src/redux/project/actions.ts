@@ -12,7 +12,7 @@ export const projectsRequest = () => ({
   type: PROJECTS_REQUEST,
 });
 
-export const projectsSuccess = (projects: ProjectType) => ({
+export const projectsSuccess = (projects: ProjectType[]) => ({
   type: PROJECTS_SUCCESS,
   payload: projects,
 });
@@ -36,3 +36,12 @@ export const projectDetailsFailure = (error: string) => ({
   type: PROJECT_DETAILS_FAILURE,
   payload: error,
 });
+
+// Defining Actions Types
+export type ProjectsActions =
+  | { type: typeof PROJECTS_REQUEST }
+  | { type: typeof PROJECTS_SUCCESS; payload: ProjectType[] }
+  | { type: typeof PROJECTS_FAILURE; payload: string }
+  | { type: typeof PROJECT_DETAILS_REQUEST; payload: number }
+  | { type: typeof PROJECT_DETAILS_SUCCESS; payload: ProjectType }
+  | { type: typeof PROJECT_DETAILS_FAILURE; payload: string };
