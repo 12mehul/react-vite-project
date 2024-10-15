@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../redux/store";
+import { AppDispatch } from "../redux/store";
 import { projectsRequest } from "../redux/project/actions";
 import { useNavigate } from "react-router-dom";
+import { AppState } from "../redux/rootReducers";
 
 const Projects = () => {
   const navigate = useNavigate();
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [page, setPage] = useState(1);
   const { loading, projects, error } = useSelector(
-    (state: RootState) => state.projects
+    (state: AppState) => state.projects
   );
 
   useEffect(() => {

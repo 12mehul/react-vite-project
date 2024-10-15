@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { AppDispatch, RootState } from "../redux/store";
+import { AppDispatch } from "../redux/store";
 import { projectDetailsRequest } from "../redux/project/actions";
+import { AppState } from "../redux/rootReducers";
 
 const ProjectDetails = () => {
   const { id } = useParams<{ id: string }>();
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const { loading, projectDetails, error } = useSelector(
-    (state: RootState) => state.projects
+    (state: AppState) => state.projects
   );
 
   useEffect(() => {
