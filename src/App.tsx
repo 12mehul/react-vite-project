@@ -16,6 +16,8 @@ import DataGridDisplayPhotos from "./components/DataGridDisplayPhotos";
 import ParentCrud from "./components/crud/ParentCrud";
 import GithubUsersCard from "./components/GithubUsersCard";
 import GithubFollowersCard from "./components/GithubFollowersCard";
+import Parent from "./components/react-memo/Parent";
+import ParentCallback from "./components/use-callback/Parent";
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
           path="/github-card/:username/followers"
           element={<GithubFollowersCard />}
         />
+        <Route path="/react-memo" element={<Parent />} />
+        <Route path="/use-callback" element={<ParentCallback />} />
       </Routes>
     </BrowserRouter>
   );

@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Container, Grid } from "@mui/material";
 import ProductItems from "./ProductItems";
 import { IProduct } from "../interface/IProduct";
-import axios from "axios";
+import { useFetch } from "../customHooks/useFetch";
 
 export default function Products() {
-  const [data, setData] = useState<IProduct[]>([]);
+  // const [data, setData] = useState<IProduct[]>([]);
 
-  useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://fakestoreapi.com/products")
+  //     .then((res) => setData(res.data))
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  const products = useFetch<IProduct[]>("https://fakestoreapi.com/products");
 
   return (
     <Container
@@ -24,13 +26,17 @@ export default function Products() {
       }}
     >
       <Grid container spacing={3} justifyContent="center">
-        {data.map((value: IProduct, index: number) => {
-          return (
-            <ProductItems data={value} i={index}>
+        {products.loading ? (
+          <p>Loading...</p>
+        ) : products.data ? (
+          products.data.map((value, index: number) => (
+            <ProductItems key={index} data={value} i={index}>
               New Product
             </ProductItems>
-          );
-        })}
+          ))
+        ) : (
+          <p>No products available.</p>
+        )}
       </Grid>
     </Container>
   );
