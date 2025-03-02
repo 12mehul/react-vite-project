@@ -18,6 +18,7 @@ import GithubUsersCard from "./components/GithubUsersCard";
 import GithubFollowersCard from "./components/GithubFollowersCard";
 import Parent from "./components/react-memo/Parent";
 import ParentCallback from "./components/use-callback/Parent";
+import FormOptimizing from "./components/optimizing-form/FormOptimizing";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         />
         <Route path="/react-memo" element={<Parent />} />
         <Route path="/use-callback" element={<ParentCallback />} />
+        <Route path="/form-optimize" element={<FormOptimizing />} />
       </Routes>
     </BrowserRouter>
   );
